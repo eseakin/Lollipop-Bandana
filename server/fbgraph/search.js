@@ -11,8 +11,8 @@ const paths = config.utils_paths;
 
 main.app.post('/api/search', (req, res) => {
   var results = 'result';
-  console.log('post received to api/search', req.data, res.data)
-  res.send(results)
-})
+  console.log('post received to api/search', req.data, res.data);
+  res.send(results);
+});
 
 module.exports = search;

@@ -17,18 +17,21 @@
   <div id="root" style="height: 100%"></div>
   <script>
 	  $( document ).ready(function() {
+	  	var data = { name: "John Adams", location: "Boston" };
+	  	var dataJSON = JSON.stringify(data);
       console.log( "ready!" );
       $.ajax({
         method: "POST",
         url: "/api/search",
-        data: JSON.stringify({ name: "John", location: "Boston" }),
-        dataType: 'json'
+        data: data,
+        // dataType: 'json'
       })
         .done(function( msg ) {
           console.log( "Data Saved: " + msg );
-          $('body').append('<div>'+msg+'</div>')
+          $('.append').append('<div>'+msg+'</div>')
         });
 	  });
   </script>
+  <div class="append"></div>
 </body>
 </html>
