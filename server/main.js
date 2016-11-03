@@ -23,9 +23,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(require('connect-history-api-fallback')());
 
 app.post('/api/search', (req, res) => {
-  var results = 'result';
+  var results = [];
   console.log('post received to api/search', req.body);
-  res.send(req.body.name);
+
+  //DATABASE QUERY HERE
+
+  res.send(results);
 });
 
 // ------------------------------------
