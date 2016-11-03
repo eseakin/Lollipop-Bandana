@@ -5,9 +5,15 @@ const debug = require('debug')('app:server');
 const webpack = require('webpack');
 const webpackConfig = require('../build/webpack.config');
 const config = require('../config');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
 
 const app = express();
 const paths = config.utils_paths;
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 // FIXME? if access_token is missing for routes other than '/', redirect to '/'
 
@@ -15,6 +21,11 @@ const paths = config.utils_paths;
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
 app.use(require('connect-history-api-fallback')());
+app.post('/api/search', (req, res) => {
+  var results = 'result';
+  console.log('post received to api/search');
+  res.send(req);
+})
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
